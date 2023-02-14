@@ -75,8 +75,7 @@ func RewriteGdoc(tableData []parsing.TableRow) {
 	tableIndex := 0
 	res, err := g.Docs(documentID).TableIndex(tableIndex).DeleteTable().Do(client)
 	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
+		log.Fatal(err)
 	}
 
 	// Создаем table request из структуры
@@ -87,8 +86,7 @@ func RewriteGdoc(tableData []parsing.TableRow) {
 	res, err = g.Docs(documentID).CreateTable(obj).Do(client)
 
 	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
+		log.Fatal(err)
 	}
 
 	fmt.Println("Your table is in the document.", res.Message)
